@@ -1,28 +1,28 @@
 name: Workflow Commands
 
-on:
-    ????????
+on: [push, workflow_dispatch]
 
 jobs:
   commands_job:
     runs-on: ubuntu-latest
     steps:
       - name: Set environment variable with "key" as "foo" and "value" as "bar" 
-        run: echo ????????
+        run: echo "foo=bar" >> "$GITHUB_ENV"
+
 
       - name: Echo the environment variable "foo" from previous step
-        run: echo "Hello, ????????"
+        run: echo "Hello, $foo"
 
       - name: Mask the "api_key" within this steps's environment variable and echo it
         env:
           api_key: 1aO764b_4e59_p@$Sw0RdAStvdf-19ofvs4F
         run: |
           echo "Un-Masked key = $api_key"
-          echo ???????
+          echo "::add-mask::$api_key"
           echo "Masked key = $api_key"
 
       - name: Create a warning Log for this message "This is a warning message."
-        run: echo ???????
+        run: ::warning::"This is a warning message."
 
       - name: Create an error annotation with following parameters, file=app.py line=49 message=nullValue 
         run: echo ??????

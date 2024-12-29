@@ -25,7 +25,7 @@ jobs:
         run: ::warning::"This is a warning message."
 
       - name: Create an error annotation with following parameters, file=app.py line=49 message=nullValue 
-        run: ::error file=app.py line=49:: message=nullValue
+        run: ::error file=app.py line=49:: message="nullValue"
 
       - name: Set an output with "key" as "LUCKY_NUMBER" and "value" as "1234567"
         id: lucky_number_step
